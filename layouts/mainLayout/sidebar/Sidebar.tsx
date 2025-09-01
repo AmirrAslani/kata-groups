@@ -1,50 +1,31 @@
 'use client';
 
-export type MenuItem = {
-    title: string;
-    path?: string;
-    children?: MenuItem[];
-};
-
-const menuItems: MenuItem[] = [
-    { title: 'Dashboard', path: '/dashboard' },
-    {
-        title: 'Products',
-        children: [
-            { title: 'Retail', path: '/products/retail' },
-            { title: 'Restaurant', path: '/products/restaurant' },
-        ],
-    },
-    { title: 'Orders', path: '/orders' },
-    {
-        title: 'Settings',
-        children: [
-            { title: 'Profile', path: '/settings/profile' },
-            { title: 'Security', path: '/settings/security' },
-        ],
-    },
-];
-
 import { useState } from 'react';
 import Link from 'next/link';
+import { menuItems } from '@/constant/sidebar.constant'
+import { MenuItem } from "@/interface/component/general.interface";
+import { useTranslation } from '@/helper/translate';
 
 export default function Sidebar() {
     const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({});
+    const { t } = useTranslation();
 
     const toggleMenu = (title: string) => {
         setOpenMenus((prev) => ({ ...prev, [title]: !prev[title] }));
     };
 
     const renderMenu = (item: MenuItem) => {
+        const title = typeof item.title === 'string' ? item.title : t(item.title);
+        
         if (item.children) {
-            const isOpen = openMenus[item.title] || false;
+            const isOpen = openMenus[title] || false;
             return (
-                <div key={item.title}>
+                <div key={title}>
                     <button
-                        onClick={() => toggleMenu(item.title)}
+                        onClick={() => toggleMenu(title)}
                         className="w-full flex justify-between items-center px-4 py-2 hover:bg-gray-500 rounded"
                     >
-                        {item.title}
+                        {title}
                         <span>{isOpen ? '▾' : '▸'}</span>
                     </button>
                     {isOpen && (
@@ -57,11 +38,11 @@ export default function Sidebar() {
         } else {
             return (
                 <Link
-                    key={item.title}
+                    key={title}
                     href={item.path || '#'}
                     className="block px-4 py-2 hover:bg-gray-500 rounded"
                 >
-                    {item.title}
+                    {title}
                 </Link>
             );
         }

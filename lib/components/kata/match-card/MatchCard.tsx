@@ -1,18 +1,6 @@
-"use client";
-
 import React from "react";
-
-type MatchCardProps = {
-  league: string;
-  team1: string;
-  team2: string;
-  matchTime: string;
-  odds: {
-    team1: number;
-    draw: number;
-    team2: number;
-  };
-};
+import { IMatchCard } from "@/interface/component/kata.interface";
+import Button from "../../base/Button";
 
 export default function MatchCard({
   league,
@@ -20,7 +8,7 @@ export default function MatchCard({
   team2,
   matchTime,
   odds,
-}: MatchCardProps) {
+}: IMatchCard) {
   return (
     <div className="w-full max-w-md mx-auto bg-[#3a3a3a] rounded-lg shadow-md overflow-hidden border border-gray-700">
       {/* لیگ */}
@@ -31,7 +19,7 @@ export default function MatchCard({
       {/* تیم‌ها */}
       <div className="px-4 py-3 flex items-center justify-between text-white">
         <div className="flex flex-col">
-          <span className="font-bold">{team1}</span>
+          <span className="font-bold mb-2">{team1}</span>
           <span className="font-bold">{team2}</span>
         </div>
         <div className="text-xs text-gray-300">{matchTime}</div>
@@ -39,15 +27,9 @@ export default function MatchCard({
 
       {/* ضرایب */}
       <div className="grid grid-cols-3 divide-x divide-gray-700 border-t border-gray-700">
-        <button className="py-3 text-center text-white font-semibold hover:bg-[#FFD700] hover:text-[#025E4E] transition">
-          {odds.team1}
-        </button>
-        <button className="py-3 text-center text-white font-semibold hover:bg-[#FFD700] hover:text-[#025E4E] transition">
-          {odds.draw}
-        </button>
-        <button className="py-3 text-center text-white font-semibold hover:bg-[#FFD700] hover:text-[#025E4E] transition">
-          {odds.team2}
-        </button>
+        <Button text={odds.team1} className="py-3 text-center text-white font-semibold hover:bg-[#FFD700] hover:text-[#025E4E] transition"/>
+        <Button text={odds.draw} className="py-3 text-center text-white font-semibold hover:bg-[#FFD700] hover:text-[#025E4E] transition"/>
+        <Button text={odds.team2} className="py-3 text-center text-white font-semibold hover:bg-[#FFD700] hover:text-[#025E4E] transition"/>
       </div>
     </div>
   );
