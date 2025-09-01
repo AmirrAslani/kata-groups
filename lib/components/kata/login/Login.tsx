@@ -44,9 +44,9 @@ const Login = () => {
             <Head>
                 <title>Bet365 - Login</title>
             </Head>
-            <div className="min-h-screen flex items-center justify-center bg-gray-100">
-                <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
-                    <h2 className="text-2xl font-bold text-center text-gray-800">{t(LoginInfo.login)}</h2>
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="p-8 rounded-lg border border-gray-300 shadow-xl max-w-sm w-full">
+                    <h2 className="text-2xl font-bold text-center">{t(LoginInfo.login)}</h2>
 
                     {/* error message */}
                     {state.error && (
@@ -60,7 +60,8 @@ const Login = () => {
                         <Input
                             type="text"
                             label={t(LoginInfo.username)}
-                            className="w-full rounded focus:outline-none focus:ring focus:ring-blue-300 text-gray-600"
+                            className="w-full rounded focus:outline-none"
+                            inputClassName="text-left placeholder:text-right ltr:placeholder:text-left focus:ring focus:ring-green-800"
                             value={state.username}
                             onChange={(e) =>
                                 setState((prev) => ({ ...prev, username: e.target.value }))
@@ -74,7 +75,8 @@ const Login = () => {
                         <Input
                             label={t(LoginInfo.password)}
                             type="password"
-                            className="w-full rounded focus:outline-none focus:ring focus:ring-blue-300 text-gray-600"
+                            className="w-full rounded focus:outline-none"
+                            inputClassName="text-left placeholder:text-right ltr:placeholder:text-left focus:ring focus:ring-green-800"
                             value={state.password}
                             onChange={(e) =>
                                 setState((prev) => ({ ...prev, password: e.target.value }))
@@ -86,7 +88,7 @@ const Login = () => {
                     {/* submit button */}
                     <Button
                         text={t(LoginInfo.login)}
-                        className="w-full bg-blue-500 text-white mt-6 py-2 rounded hover:bg-blue-600 transition duration-200"
+                        className="w-full bg-green-800 text-white mt-6 py-2 rounded hover:bg-green-900 transition duration-200"
                         onClick={handleLogin}
                     />
                 </div>

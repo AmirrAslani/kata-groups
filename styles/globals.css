@@ -11,9 +11,41 @@
        url('./fonts/Estedad-Medium.woff2') format('woff2');
 }
 
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --sidebar-bg: #ffffff;
+  --sidebar-text: #1a1a1a;
+  --sidebar-hover: #f3f4f6;
+}
+
+.dark {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e2e2e2;
+  --text-secondary: #9ca3af;
+  --border-color: #404040;
+  --sidebar-bg: #2d2d2d;
+  --sidebar-text: #e2e2e2;
+  --sidebar-hover: #404040;
+}
+
 body {
-  background: #282828;
-  color: #e2e2e2;
-  font-family: 'Estedad';
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Estedad', sans-serif;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode utility classes */
+.dark-mode {
+  @apply bg-gray-500 text-white;
+}
+
+.light-mode {
+  @apply bg-white text-gray-900;
 } 

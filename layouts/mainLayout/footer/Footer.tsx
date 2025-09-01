@@ -8,7 +8,7 @@ export default function Footer() {
     const { t } = useTranslation();
 
     return (
-        <footer className="text-white border-t border-gray-500 pb-5 pt-8">
+        <footer className="border-t border-gray-500 pb-5 pt-8">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between gap-8 mb-8">
 
@@ -55,13 +55,13 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-white border-opacity-20 pt-3 flex flex-col md:flex-row justify-between items-center">
+                <div className="border-t border-opacity-20 pt-3 flex flex-col md:flex-row justify-between items-center">
                     <div className="flex items-center gap-x-3 text-center md:text-right mb-4 md:mb-0">
                         <Link
                             className="cursor-pointer text-blue-600 hover:text-blue-800"
                             href={'/'}
                         >
-                            <BsArrowUpCircle className='text-white hover:text-gray-400 transition size-[35px]' />
+                            <BsArrowUpCircle className='text-gray-400 transition size-[35px]' />
                         </Link>
                         <div>
                             <span>

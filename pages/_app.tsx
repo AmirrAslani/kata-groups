@@ -6,6 +6,9 @@ import MainLayout from "@/layouts/mainLayout/MainLayout";
 import { useRouter } from "next/router";
 import LoginPage from "./kata/login";
 import { LanguageProvider } from "@/context/LanguageProvider";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
+import ThemeProvider from "@/context/ThemeProvider";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -15,18 +18,26 @@ export default function App({ Component, pageProps }: AppProps) {
   const getLayout = (page: React.ReactNode) => {
     if (isLoginRoute) {
       return (
-        <LanguageProvider>
-          <LoginPage />
-        </LanguageProvider>
+        <Provider store={store}>
+          <ThemeProvider>
+            <LanguageProvider>
+              <LoginPage />
+            </LanguageProvider>
+          </ThemeProvider>
+        </Provider>
       );
     }
     return (
-      <LanguageProvider>
-      <MainLayout>
-        <ToastContainer rtl className="z-9999" />
-        {page}
-      </MainLayout>
-      </LanguageProvider>
+      <Provider store={store}>
+        <ThemeProvider>
+          <LanguageProvider>
+            <MainLayout>
+              <ToastContainer rtl className="z-9999" />
+              {page}
+            </MainLayout>
+          </LanguageProvider>
+        </ThemeProvider>
+      </Provider>
     );
   };
 

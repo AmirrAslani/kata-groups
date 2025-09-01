@@ -1,12 +1,11 @@
 import Head from 'next/head';
 import MatchCard from '@/lib/components/kata/match-card/MatchCard';
 import { useTranslation } from '@/helper/translate';
-import { useState } from 'react';
 import { HomeInfo } from '@/i18n/pages/kata/home.i18n';
 
 export default function Home() {
   const { t } = useTranslation();
-  const [matchData, setMatchData] = useState([
+  const matchData = [
     {
       league: "Premier League",
       team1: "Manchester United",
@@ -49,7 +48,7 @@ export default function Home() {
       matchTime: "23:00",
       odds: { team1: 2.7, draw: 3.2, team2: 2.6 }
     }
-  ]);
+  ];
 
   return (
     <>
@@ -64,7 +63,7 @@ export default function Home() {
 
       <div className="min-h-screen p-6">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl font-bold text-white mb-8 text-center">
+          <h1 className="text-3xl font-bold mb-8 text-center">
             {t(HomeInfo.liveMatches)}
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

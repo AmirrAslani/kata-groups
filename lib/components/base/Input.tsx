@@ -19,7 +19,7 @@ const Input = ({
         </div>
       )}
       <div className='w-full'>
-        <label className="block text-gray-600 font-medium mb-1">{label}</label>
+        <label className="block font-medium mb-1">{label}</label>
         <input
           type={type}
           placeholder={placeholder}

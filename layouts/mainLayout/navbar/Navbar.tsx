@@ -5,8 +5,14 @@ import { useLang } from '@/context/LanguageProvider';
 import { NavbarInfo } from "@/i18n/layouts/navbar.i18n";
 import { useTranslation } from '@/helper/translate';
 import Button from "@/lib/components/base/Button";
+import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "@/redux/store";
+import { toggleDarkMode } from "@/redux/slices/themeSlice";
 
 export default function Navbar() {
+  const dispatch = useAppDispatch();
+  const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+
   const { lang, toggleLang } = useLang();
   const { t } = useTranslation();
   const router = useRouter();
@@ -59,7 +65,7 @@ export default function Navbar() {
     setIsProfileMenuOpen(false);
     router.push('/kata/login')
   };
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLang = e.target.value as 'en' | 'fa';
     if (selectedLang !== lang) {
@@ -69,14 +75,20 @@ export default function Navbar() {
 
   return (
     <header className="relative w-full bg-[#025E4E] text-white">
-      <div className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-[#2A2A2A] to-transparent pointer-events-none"></div>
-      <div className="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#2A2A2A] to-transparent pointer-events-none"></div>
+      <div className="absolute left-0 top-0 h-full w-50 bg-gradient-to-r from-[#2A2A2A] to-transparent pointer-events-none"></div>
+      <div className="absolute right-0 top-0 h-full w-50 bg-gradient-to-l from-[#2A2A2A] to-transparent pointer-events-none"></div>
 
       <nav className="container mx-auto flex items-center justify-between px-6 py-5 relative z-10">
         {/* Logo */}
-        <div className="text-2xl font-bold">
-          <span className="text-white">bet</span>
-          <span className="text-[#FFD700]">365</span>
+        <div className="flex items-center space-x-3">
+          <div>
+            <span className="text-white text-2xl font-bold">bet</span>
+            <span className="text-[#FFD700] text-2xl font-bold">365</span>
+          </div>
+          <Button text={darkMode ? "🌙 Dark" : "☀️ Light"}
+            onClick={() => dispatch(toggleDarkMode())}
+            className="px-2 py-1 rounded border border-gray-400 transition-colors cursor-pointer" />
+
         </div>
 
         {/* Desktop Navigation Links */}
@@ -85,13 +97,13 @@ export default function Navbar() {
             href="/"
             className="hover:text-[#FFD700] relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#FFD700] after:transition-all hover:after:w-full"
           >
-           {t(NavbarInfo.allSports)}
+            {t(NavbarInfo.allSports)}
           </Link>
           <Link
             href="/"
             className="hover:text-[#FFD700] relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#FFD700] after:transition-all hover:after:w-full"
           >
-           {t(NavbarInfo.liveInGame)}
+            {t(NavbarInfo.liveInGame)}
           </Link>
         </div>
 
@@ -133,7 +145,7 @@ export default function Navbar() {
                     <Button
                       onClick={handleSignOut}
                       text={t(NavbarInfo.signOut)}
-                      className="w-full px-4 py-2 text-left hover:bg-gray-100"
+                      className="w-full px-4 py-2 hover:bg-gray-100"
                     />
                   </div>
                 )}
@@ -158,8 +170,8 @@ export default function Navbar() {
             onChange={handleChange}
             className="px-2 py-1 rounded-md border border-gray-300 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs"
           >
-            <option value="en">EN</option>
-            <option value="fa">FA</option>
+            <option value="en">English</option>
+            <option value="fa">فارسی</option>
           </select>
 
           <button
@@ -175,7 +187,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           ref={mobileMenuRef}
           className="md:hidden bg-[#025E4E] border-t border-[#014736] absolute w-full z-50"
         >
@@ -207,14 +219,14 @@ export default function Navbar() {
                       className="w-8 h-8 rounded-full"
                     />
                     <div>
-                      <p className="font-semibold">kata</p>
-                      <p className="text-gray-300 text-sm">kata@gmail.com</p>
+                      <span className="font-semibold">kata</span>
+                      <span className="text-gray-300 text-sm">kata@gmail.com</span>
                     </div>
                   </div>
                   <Button
                     onClick={handleSignOut}
                     text={t(NavbarInfo.signOut)}
-                    className="w-full px-4 py-2 text-left hover:bg-[#014736]"
+                    className="w-full px-4 py-2 hover:bg-[#014736] cursor-pointer"
                   />
                 </div>
               ) : (
@@ -223,7 +235,7 @@ export default function Navbar() {
                   className="text-white font-semibold hover:text-[#FFD700] flex gap-2 items-center py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  
+
                   {t(NavbarInfo.login)}
                 </Link>
               )}
