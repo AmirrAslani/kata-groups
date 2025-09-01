@@ -214,14 +214,14 @@ export default function Navbar() {
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2 text-white">
                     <img
-                      src=""
+                      src="/images/user.png"
                       alt="Profile"
                       className="w-8 h-8 rounded-full"
                     />
-                    <div>
-                      <span className="font-semibold">kata</span>
-                      <span className="text-gray-300 text-sm">kata@gmail.com</span>
-                    </div>
+                    <span className="font-semibold">kata</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-300 text-sm">kata@gmail.com</span>
                   </div>
                   <Button
                     onClick={handleSignOut}

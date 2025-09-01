@@ -21,6 +21,20 @@ export default function App({ Component, pageProps }: AppProps) {
         <Provider store={store}>
           <ThemeProvider>
             <LanguageProvider>
+            <ToastContainer 
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              style={{ zIndex: 999999 }}
+              toastClassName="!bg-green-600 !text-white"
+            />
               <LoginPage />
             </LanguageProvider>
           </ThemeProvider>
@@ -32,7 +46,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <ThemeProvider>
           <LanguageProvider>
             <MainLayout>
-              <ToastContainer rtl className="z-9999" />
               {page}
             </MainLayout>
           </LanguageProvider>

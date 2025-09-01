@@ -24,5 +24,9 @@ export const LoginInfo: I18nInterface = {
 	enterPassword: {
 		en: 'Enter the password',
 		fa: 'رمز عبور را وارد کنید'
-	}
+	},
+	successLogin: {
+		en: 'Login Successfully!',
+		fa: 'ورود موفق!'
+	},
 };

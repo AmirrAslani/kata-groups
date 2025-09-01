@@ -6,6 +6,7 @@ import Input from "../../base/Input";
 import { LoginInfo } from "@/i18n/components/kata/login.i18n";
 import { useTranslation } from '@/helper/translate';
 import Head from "next/head";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const router = useRouter();
@@ -25,7 +26,11 @@ const Login = () => {
     const handleLogin = () => {
         if (state.username === correctUsername && state.password === correctPassword) {
             localStorage.setItem("testAccessToken", "randomAccessToken12345");
-            router.push("/");
+            console.log("Showing toast...");
+            toast.success(`${t(LoginInfo.successLogin)}`);
+            setTimeout(() => {
+                router.push("/");
+            }, 1000);
         } else {
             setState((prev) => ({ ...prev, error: t(LoginInfo.error) }));
         }

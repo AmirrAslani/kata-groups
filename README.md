@@ -1,8 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 
-A Next.js application featuring authentication...
-
 ## Features
 
 ### Authentication
@@ -18,8 +16,10 @@ A Next.js application featuring authentication...
 - **Next.js** - Frontend framework
 - **TypeScript** - Type checking and data structure definition
 - **Tailwind CSS** - Styling and responsive design
+- **Custom i18n** - A customized i18n for better language management
+- **Redux Toolkit** - Management of dark mode state
 - **React Toastify** - Notification system
-- **Custom Components** - Input and Buttton
+- **Custom Components** - Input, Buttton and...
 
 
 ## Getting Started

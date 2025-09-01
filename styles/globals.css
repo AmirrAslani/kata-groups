@@ -49,3 +49,19 @@ body {
 .light-mode {
   @apply bg-white text-gray-900;
 } 
+
+/* Ensure React Toastify toasts are visible */
+.Toastify__toast-container {
+  z-index: 999999 !important;
+}
+
+.Toastify__toast {
+  z-index: 999999 !important;
+}
+
+/* Make success toasts more visible */
+.Toastify__toast--success {
+  background: #059669 !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
